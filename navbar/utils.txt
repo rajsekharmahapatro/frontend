@@ -1,4 +1,4 @@
-<!-- links -->
+
       <ul class="links">
         <li>
           <a href="index.html">home</a>

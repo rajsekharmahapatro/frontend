@@ -193,7 +193,7 @@ nav {
 .nav-toggle {
   font-size: 1.5rem;
   color: var(--clr-primary-5);
-  background: transparent;
+  background: var(--clr-primary-4);
   border-color: transparent;
   transition: var(--transition);
   cursor: pointer;
