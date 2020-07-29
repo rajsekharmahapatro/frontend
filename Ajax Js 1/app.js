@@ -4,35 +4,14 @@ const btn = document.querySelector(".btn");
 const content = document.querySelector(".content");
 const img = document.querySelector(".container img");
 btn.addEventListener("click", () => {
-  getData(url)
-    .then((response) => displayData(response))
-    .catch((response) => console.log(response));
+  fetch(url)
+    .then((data) => data.json())
+    .then((response) => displayData(response));
 });
 
-function getData(url) {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", url);
-    xhr.send();
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState !== 4) {
-        return;
-      }
-      if (xhr.status === 200) {
-        resolve(xhr.responseText);
-      } else {
-        reject({
-          status: xhr.status,
-          message: status.statusText,
-        });
-      }
-    };
-  });
-}
-
-function displayData() {
+function displayData(response) {
   img.classList.add("shake-img");
-  const { value: joke } = JSON.parse(xhr.responseText);
+  const { value: joke } = response;
   const balayya = joke.replace(/Chuck Norris/, "Balayya");
   content.textContent = balayya;
   setTimeout(() => {
